@@ -1,0 +1,12 @@
+[ 2016-08-30T20:14:07+08:00 ] 0.0.0.0 /oa/index.php/Index/login
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2016-08-30T20:17:08+08:00 ] 0.0.0.0 /oa/index.php/Index/login
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2016-08-30T20:17:49+08:00 ] 0.0.0.0 /oa/index.php/Index/login
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2016-08-30T20:23:36+08:00 ] 0.0.0.0 /oa/index.php/Index/login
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+

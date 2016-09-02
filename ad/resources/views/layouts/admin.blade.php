@@ -182,7 +182,6 @@ desired effect
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="{{ asset('/public/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-
                 <p>
                   余贤君 - Web Developer
                   <small>添加日期 2016/08/30</small>
@@ -262,10 +261,20 @@ desired effect
             <li><a href="#">账户一览</a></li>
             <li><a href="#">财务结算</a></li>
             <li><a href="#">账务信息</a></li>
-            <li><a href="#">密码重置</a></li>
           </ul>
-
         </li>
+
+        <!--应用管理-->
+        <li class="active"><a href="#"><i class="fa fa-link"></i>
+            <span>应用管理</span></a>
+          <ul class="treeview-menu">
+            <li><a href="{{url('/admin/app_manage')}}">应用列表</a></li>
+          </ul>
+        </li>
+        <!--end-->
+
+
+
         <li><a href="#"><i class="fa fa-link"></i> <span>数据报表</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>媒体管理</span>
@@ -286,7 +295,8 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">新增用户</a></li>
+            <li><a href="{{url('/admin/add_user')}}">新增用户</a></li>
+            <li><a href="{{url('/admin/reset_passwd')}}">密码重置</a></li>
             <li><a href="#">修改用户</a></li>
           </ul>
         </li>

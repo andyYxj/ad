@@ -1,67 +1,103 @@
-
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>广告后台管理 | 登录页面</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="{{ asset('/public/AdminLTE/bootstrap/css/bootstrap.min.css')}}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ asset('/public/AdminLTE/dist/css/AdminLTE.min.css')}}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ asset('/public/AdminLTE/plugins/iCheck/square/blue.css')}}">
 
-    <head>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <b>用户登录</b>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
 
-        <meta charset="utf-8">
-        <title>Admin Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
-
-        <!-- CSS -->
-		
-        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
-        <link rel="stylesheet" href="{{URL::asset('/public/admin/css/reset.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('/public/admin/css/supersized.css') }}">
-        <link rel="stylesheet" href="{{ URL::asset('/public/admin/css/style.css') }}">
-
-
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-    </head>
-
-    <body>
-    {{--{{ csrf_token() }}--}}
-        <div class="page-container">
-            <h1>Login</h1>
-            <form action="{{url('/admin/user_login ')}}" method="post">
-                {{csrf_field()}}
-                @if(session('msg'))
-                  <div  style="background-color: #ac2925">{{session('msg')}}</div>
-                @endif
-
-                <input type="text" name="username" class="username" placeholder="请输入用户名">
-                <input type="password" name="password" class="password" placeholder="请输入密码">
-
-                <input type="text" name="verCode" class="password" placeholder="请输入验证码">
-                <div  style="float: right "><img src="{{url('/admin/veri_code')}}"  onclick="this.src='{{url('/admin/veri_code')}}?'+Math.random()"></div>
-
-                <button type="submit">登录</button>
-                <div class="error"><span> </span></div>
-            </form>
-          {{--  <div class="connect">
-                <p>Or connect with:</p>
-                <p>
-                    <a class="facebook" href=""></a>
-                    <a class="twitter" href=""></a>
-                </p>
-            </div>--}}
+    <form action="{{url('/admin/user_login')}}" method="post">
+      {{csrf_field()}}
+      @if(session('msg'))
+        <div class="form-group has-feedback" style="background-color: red">
+        {{session('msg')}}
         </div>
-       {{-- <div align="center">Collect from <a href="" target="_blank" title=""></a></div>--}}
+      @endif
 
-        <!-- Javascript -->
-		
-        <script src="{{ URL::asset('/public/admin/js/jquery-1.8.2.min.js')}}"></script>
-        <script src="{{ URL::asset('/public/admin/js/supersized.3.2.7.min.js')}}"></script>
-        <script src="{{ URL::asset('/public/admin/js/supersized-init.js')}}"></script>
-        <script src="{{ URL::asset('/public/admin/js/scripts.js')}}"></script>
+      <div class="form-group has-feedback">
+        <input type="user"   name="username" class="form-control" placeholder="用户名">
+        <span class="glyphicon  glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password"  name="password" class="form-control" placeholder="密码">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
 
-    </body>
+      <div class="form-group has-feedback">
+        <input type="password"  name="verCode" class="form-control" placeholder="请输入下方验证码，可点击切换验证码">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
 
+      <div  class="form-group has-feedback ">
+        <img src="{{url('/admin/veri_code')}}"  onclick="this.src='{{url('/admin/veri_code')}}?'+Math.random()">
+      </div>
+
+      <div class="row">
+      {{--  <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div>--}}
+        <!-- /.col -->
+        <div class="col-xs-4 pull-right">
+          <button type="submit" class="btn btn-primary btn-block btn-flat ">登录</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+    <!-- /.social-auth-links -->
+{{--
+    <a href="#">I forgot my password</a><br>
+    <a href="register.html" class="text-center">Register a new membership</a>--}}
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.2.3 -->
+<script src="{{ asset('/public/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{{ asset('/public/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
+<!-- iCheck -->
+<script src="{{ asset('/public/AdminLTE/plugins/iCheck/icheck.min.js')}}"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+  });
+</script>
+</body>
 </html>
-

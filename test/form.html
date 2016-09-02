@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Bootstrap 实例 - 水平表单</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="firstname" class="col-sm-2 control-label">名字</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="firstname"
+                   placeholder="请输入名字">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastname" class="col-sm-2 control-label">姓</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="lastname"
+                   placeholder="请输入姓">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> 请记住我
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">登录</button>
+        </div>
+    </div>
+</form>
+
+<form class="form-inline">
+    <p>Login</p>
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-envelope"></i></span>
+        <input class="span4" type="text" placeholder="Email address">
+    </div>
+    <div class="input-prepend">
+        <span class="add-on"><i class="icon-key"></i></span>
+        <input class="span4" type="password" placeholder="Password">
+    </div>
+</form>
+
+<ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
+<ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li class="active"><a href="#">1</a></li>
+    <li class="disabled"><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+</ul>
+
+<ul class="pager">
+    <li><a href="">Previous</a></li>
+    <li><a href="">Next</a></li>
+</ul>
+
+<div class="dropdown">
+    <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+            data-toggle="dropdown">
+        主题
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">Java</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
+        </li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">数据通信/网络</a>
+        </li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation">
+            <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
+        </li>
+    </ul>
+</div>
+
+<p>标签式的导航菜单</p>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+<p>基本的胶囊式导航菜单</p>
+<ul class="nav nav-pills">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>垂直的胶囊式导航菜单</p>
+<ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>两端对齐的导航元素</p>
+<ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+</ul><br><br><br>
+<ul class="nav nav-tabs nav-justified">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li><a href="#">Java</a></li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+<p>带有下拉菜单的标签</p>
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="#">SVN</a></li>
+    <li><a href="#">iOS</a></li>
+    <li><a href="#">VB.Net</a></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Java <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Swing</a></li>
+            <li><a href="#">jMeter</a></li>
+            <li><a href="#">EJB</a></li>
+            <li class="divider"></li>
+            <li><a href="#">分离的链接</a></li>
+        </ul>
+    </li>
+    <li><a href="#">PHP</a></li>
+</ul>
+
+</body>
+</html>
