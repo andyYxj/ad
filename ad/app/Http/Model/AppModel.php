@@ -11,9 +11,15 @@ class AppModel extends BaseModel
     /**
      * app列表
      */
-    public function appList($uid){
-        $result=DB::table('appinfo')->where('uid',$uid)->get();
-        //var_dump($result);die();
+    public function appList($uid,$appName){
+        if($appName==null){
+            $result=DB::table('appinfo')->where('uid',$uid)->get();
+        }else if($appName!=null){
+           // $result=DB::table('appinfo')->where('uid',$uid)->where('app_name',$appName)->get();
+            $result = DB::table('appinfo')->where('uid',$uid)->where('app_name', 'like', "%$appName%")->get();
+           // var_dump($result);die();
+        }
+      //  var_dump($result);die();
         return  $this->object_array($result);
     }
 

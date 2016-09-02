@@ -18,14 +18,12 @@ class AppManageController extends BaseController
     /**
      * app管理首页
      */
-    public  function appManage(){
+    public  function appManage($appName=null){
+
         $user=session('user');
         $uid=$user->uid;
-      //  var_dump($uid);die();
         $app=new AppModel();
-         $result=$app->appList($uid);
-        //var_dump($result);die();
-
+         $result=$app->appList($uid,$appName);
         return view('/admin/app_manage',['appInfo'=>$result]);
     }
 

@@ -41,14 +41,16 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::match(['get','post'],'/admin/add_user_info','Admin\UserController@addUserInfo');
     Route::match(['get','post'],'/admin/reset_passwd','Admin\UserController@resetPasswd');//页面
     Route::match(['get','post'],'/admin/reset_password','Admin\UserController@resetPassword');
-    Route::match(['get','post'],'/admin/app_manage','Admin\AppManageController@appManage');//app显示页面
-    Route::match(['get','post'],'/admin/add_app','Admin\AppManageController@addApp');//app显示页面
+    Route::match(['get','post'],'/admin/app_manage/{appName?}','Admin\AppManageController@appManage');//app列表显示页面
+    Route::match(['get','post'],'/admin/add_app','Admin\AppManageController@addApp');//app增加页面
     Route::match(['get','post'],'/admin/add_app_info','Admin\AppManageController@addAppInfo');//app新增
 
 });
 
 
-
+Route::get('user/{name?}', function ($name = null) {
+    return $name;
+});
 
 
 Route::get('testResponseCookie',function(){

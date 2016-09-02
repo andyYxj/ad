@@ -25,10 +25,10 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">应用列表</h3>
                     </div>
-                    <div class="input-group margin col-md-4 ">
-                        <input type="text" class="form-control">
+                    <div class="input-group margin col-md-5 ">
+                        <input type="text" id="app_name" class="form-control"  placeholder="按应用名称搜索">
                     <span class="input-group-btn">
-                      <button type="button" class="btn btn-info btn-flat">搜索</button> &nbsp &nbsp &nbsp
+                      <button type="button" id="app_search"  class="btn btn-info btn-flat">搜索</button> &nbsp &nbsp &nbsp
                         <a  href="{{url('/admin/add_app')}}"><button type="button" id="addApp" class="btn btn-info btn-flat">添加应用</button></a>
                     </span>
                     </div>
@@ -78,14 +78,15 @@
 
 @endsection
 
-{{--<!--js-->
+
 <script type="text/javascript" src="{{ asset('/public/admin/js/jquery-1.8.2.min.js')}}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#addApp").click(function(){
-           location.href('{{url('/admin/add_app')}}}');
-           // alert(123);
+        $("#app_search").click(function(){
+            var app_name=$("#app_name").val();
+           // alert(app_name);
+           location.href='{{url("/admin/app_manage/")}}/'+app_name;
         });
     });
-</script>--}}
+</script>
 
