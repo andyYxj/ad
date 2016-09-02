@@ -6,6 +6,7 @@ use Faker\Provider\Base;
 use Illuminate\Http\Request;
 use App\Http\Model\AppModel;
 use App\Http\Requests;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Input;
 
 /**
@@ -38,10 +39,9 @@ class AppManageController extends BaseController
      * 新增app信息
      */
     public  function addAppInfo(){
-        $user=session('user');
-        $uid=$user->uid;
         if($input=Input::all()){
-
+            $user=session('user');
+            $uid=$user->uid;
             $app=new AppModel();
             $status=$app->addAppInfo($input,$uid);
             if($status==101){
@@ -50,9 +50,53 @@ class AppManageController extends BaseController
             if($status==102){
                 return back()->with('msg','应用添加失败！');
             }
+        }
+    }
 
+    /**
+     * 增加广告位页面
+     */
+    public function addAdPosition($app_id){
+        $user=session('user');
+        $uid=$user->uid;
+        $result=new AppModel();
+        $type=$result->getAdType();
+        $adInfo=$result->getAdPos($uid,$app_id);
+        return view('/admin/add_adPosition',['app_id'=>$app_id,'ad_type'=>$type,'ad_info'=>$adInfo]);
 
+    }
 
+    /**
+     * 增加广告位
+     */
+    public function addAdPositionInfo(){
+        if($input=Input::all()){
+            $user=session('user');
+            $uid=$user->uid;
+            $result=new AppModel();
+            $status=$result->addAdPositionInfo($uid,$input);
+            if($status==101){
+                return back()->with('msg','广告位添加成功！');
+            }
+            if($status==102){
+                return back()->with('msg','广告位添加失败！');
+            }
+        }
+
+    }
+
+    /**
+     * 删除广告位置
+     */
+    public function delAdPosition($appAd_id){
+        //var_dump($appAd_id);
+        $result=new AppModel();
+        $status=$result->delAdPosition($appAd_id);
+        if($status==101){
+            return back()->with('msg','广告位删除成功！');
+        }
+        if($status==102){
+            return back()->with('msg','广告位删除失败！');
         }
 
 

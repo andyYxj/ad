@@ -37,19 +37,25 @@ Route::group(['middleware'=>['admin.login']],function(){
  //   Route::get('/admin/index','Admin\IndexController@index');
     Route::match(['get','post'],'/admin/index','Admin\IndexController@index');
     Route::match(['get','post'],'/admin/logout','Admin\UserController@userLogout');
-    Route::match(['get','post'],'/admin/add_user','Admin\UserController@addUser');//页面
-    Route::match(['get','post'],'/admin/add_user_info','Admin\UserController@addUserInfo');
-    Route::match(['get','post'],'/admin/reset_passwd','Admin\UserController@resetPasswd');//页面
-    Route::match(['get','post'],'/admin/reset_password','Admin\UserController@resetPassword');
+    Route::match(['get','post'],'/admin/add_user','Admin\UserController@addUser');//增加用户页面
+    Route::match(['get','post'],'/admin/add_user_info','Admin\UserController@addUserInfo');//增加用户方法
+    Route::match(['get','post'],'/admin/reset_passwd','Admin\UserController@resetPasswd');//重置密码页面
+    Route::match(['get','post'],'/admin/reset_password','Admin\UserController@resetPassword');//重置密码方法
     Route::match(['get','post'],'/admin/app_manage/{appName?}','Admin\AppManageController@appManage');//app列表显示页面
     Route::match(['get','post'],'/admin/add_app','Admin\AppManageController@addApp');//app增加页面
     Route::match(['get','post'],'/admin/add_app_info','Admin\AppManageController@addAppInfo');//app新增
 
+    Route::match(['get','post'],'/admin/add_adPosition/{app_id}','Admin\AppManageController@addAdPosition');//增加广告位页面
+    Route::match(['get','post'],'/admin/add_adPositionInfo/','Admin\AppManageController@addAdPositionInfo');//增加广告位方法
+    Route::match(['get','post'],'/admin/del_adPosition/{appAd_id}','Admin\AppManageController@delAdPosition');//删除广告位方法
+
+
+
 });
 
 
-Route::get('user/{name?}', function ($name = null) {
-    return $name;
+Route::get('test', function ($name = null) {
+    return date('YmdHis') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
 });
 
 

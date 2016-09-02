@@ -51,7 +51,7 @@
                                 <td>{{$appinfo['app_remark']}}</td>
                                 <td>{{$appinfo['create_time']}}</td>
                                 <td>{{$appinfo['update_time']}} </td>
-                                <td><a>添加广告位</a></td>
+                                <td><a href=" {{'/admin/add_adPosition/' }}{{$appinfo['app_id']}}">添加广告位</a></td>
                             </tr>
                                 @endforeach
                             </tbody>
@@ -84,8 +84,14 @@
     $(document).ready(function(){
         $("#app_search").click(function(){
             var app_name=$("#app_name").val();
-           // alert(app_name);
-           location.href='{{url("/admin/app_manage/")}}/'+app_name;
+    /*        var url='{{url("/admin/app_manage/")}}';
+
+            $.get("url", function(result){
+                alert(12);
+                location.href='{{url("/admin/app_manage/")}}/'+app_name;
+            });*/
+
+             location.href='{{url("/admin/app_manage/")}}/'+app_name;
         });
     });
 </script>
