@@ -41,11 +41,11 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::match(['get','post'],'/admin/add_user_info','Admin\UserController@addUserInfo');//增加用户方法
     Route::match(['get','post'],'/admin/reset_passwd','Admin\UserController@resetPasswd');//重置密码页面
     Route::match(['get','post'],'/admin/reset_password','Admin\UserController@resetPassword');//重置密码方法
-    Route::match(['get','post'],'/admin/app_manage/{appName?}','Admin\AppManageController@appManage');//app列表显示页面
+    Route::match(['get','post'],'/admin/app_manage/{appName?}','Admin\AppManageController@appPaging');//app列表显示页面
     Route::match(['get','post'],'/admin/add_app','Admin\AppManageController@addApp');//app增加页面
     Route::match(['get','post'],'/admin/add_app_info','Admin\AppManageController@addAppInfo');//app新增
 
-    Route::match(['get','post'],'/admin/add_adPosition/{app_id}','Admin\AppManageController@addAdPosition');//增加广告位页面
+    Route::match(['get','post'],'/admin/add_adPosition/{app_id}','Admin\AppManageController@addAdPaging');//增加广告位页面
     Route::match(['get','post'],'/admin/add_adPositionInfo/','Admin\AppManageController@addAdPositionInfo');//增加广告位方法
     Route::match(['get','post'],'/admin/del_adPosition/{appAd_id}','Admin\AppManageController@delAdPosition');//删除广告位方法
 

@@ -46,9 +46,16 @@ class UserModel extends BaseModel
          return $status=102;//添加失败
      }
 
+    }
 
 
-
+    /**
+     * 重置用户密码
+     */
+    public function resetPasswd($uid,$passwd){
+        $result=DB::table('user')
+            ->where('uid',$uid)
+            ->update(['passwd'=>$passwd]);
 
     }
 }

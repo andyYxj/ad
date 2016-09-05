@@ -176,15 +176,15 @@ desired effect
               <!-- The user image in the navbar-->
               <img src="{{ asset('/public/AdminLTE/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">余贤君</span>
+              <span class="hidden-xs">{{session('user')->uname}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="{{ asset('/public/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                 <p>
-                  余贤君 - Web Developer
-                  <small>添加日期 2016/08/30</small>
+                  {{session('user')->uname}}
+                  <small>添加时间 {{session('user')->created_at}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -233,7 +233,7 @@ desired effect
           <img src="{{ asset('/public/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>余贤君</p>
+          <p>{{session('user')->uname}}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
         </div>

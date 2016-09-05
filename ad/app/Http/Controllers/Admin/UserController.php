@@ -50,8 +50,10 @@ class UserController extends BaseController
                 return back()->with('msg','验证码错误！');
             }
             session(['user'=>$user]);
+           // var_dump(session('user')->uname);die();
+            $user=session('user');
 
-            return redirect('admin/index');
+            return view('admin/index');
 
         }else{
             return back()->with('msg','请填写登录信息！');
@@ -129,18 +131,43 @@ class UserController extends BaseController
     }
 
     public function resetPassword(){
-
-        if($input=Input::all()){
-
+        $user=session('user');
+        if(isset($user)){
+            if($input=Input::all()){
+                //原密码不正确
+                if(Crypt::decrypt($user->passwd) != $input['old_passwd']){
+                    return back()->with('msg','原密码不正确，请重新输入');
+                }
+                if($input['new_passwd']!=$input['new_passwd_again']){
+                    return back()->with('msg','两次输入的密码不一致，请重新输入');
+                }
+            }
 
         }
 
-         $user=session('user');
-     // $user=$request->session()->get('user');
         $uname=$user->uname;
+        $uid=$user->uid;
+        $passwd=Crypt::encrypt($input['new_passwd']);
+        //var_dump($passwd);die();
         $result=new UserModel();
-        $result=$result->getUserInfo($uname);
+        $result=$result->resetPasswd($uid,$passwd);
 
+
+     // $user=$request->session()->get('user');
+
+
+
+    }
+
+    /**
+     * 获取用户信息
+     */
+    public function getUserInfo(){
+        $user=session('user');
+        if(isset($user)){
+            var_dump($user);die();
+            return view('/layouts/admin',['user'=>$user]);
+        }
 
     }
 }

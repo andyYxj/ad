@@ -47,11 +47,11 @@
                             <tbody>
                             @foreach($appInfo as $appinfo)
                             <tr>
-                                <td>{{$appinfo['app_name']}}</td>
-                                <td>{{$appinfo['app_remark']}}</td>
-                                <td>{{$appinfo['create_time']}}</td>
-                                <td>{{$appinfo['update_time']}} </td>
-                                <td><a href=" {{'/admin/add_adPosition/' }}{{$appinfo['app_id']}}">添加广告位</a></td>
+                                <td>{{$appinfo->app_name}}</td>
+                                <td>{{$appinfo->app_remark}}</td>
+                                <td>{{$appinfo->create_time}}</td>
+                                <td>{{$appinfo->update_time}} </td>
+                                <td><a href=" {{'/admin/add_adPosition/' }}{{$appinfo->app_id}}">添加广告位</a></td>
                             </tr>
                                 @endforeach
                             </tbody>
@@ -65,8 +65,26 @@
                             </tr>
                             </tfoot>
                         </table>
+
                     </div>
 
+                    {!! $appInfo->links() !!}
+                    {{--<div class="col-sm-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button previous disabled" id="example2_previous">
+                                    <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">上一页</a>
+                                </li>
+                                <li class="paginate_button active">
+                                    <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a>
+                                </li>
+                                <li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a>
+                                </li>
+                                <li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">下一页</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

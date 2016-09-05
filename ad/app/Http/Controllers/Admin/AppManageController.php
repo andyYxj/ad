@@ -19,12 +19,24 @@ class AppManageController extends BaseController
     /**
      * app管理首页
      */
-    public  function appManage($appName=null){
+/*    public  function appManage($appName=null){
 
         $user=session('user');
         $uid=$user->uid;
         $app=new AppModel();
          $result=$app->appList($uid,$appName);
+        return view('/admin/app_manage',['appInfo'=>$result]);
+    }*/
+
+    /**
+     *
+     * app列表分页
+     */
+    public  function appPaging($appName=null){
+        $user=session('user');
+        $uid=$user->uid;
+        $app=new AppModel();
+        $result=$app->appPaging($uid,$appName);
         return view('/admin/app_manage',['appInfo'=>$result]);
     }
 
@@ -56,12 +68,25 @@ class AppManageController extends BaseController
     /**
      * 增加广告位页面
      */
-    public function addAdPosition($app_id){
+/*    public function addAdPosition($app_id){
         $user=session('user');
         $uid=$user->uid;
         $result=new AppModel();
         $type=$result->getAdType();
         $adInfo=$result->getAdPos($uid,$app_id);
+        return view('/admin/add_adPosition',['app_id'=>$app_id,'ad_type'=>$type,'ad_info'=>$adInfo]);
+
+    }*/
+
+    /**
+     *分页 广告位
+     */
+    public function addAdPaging($app_id){
+        $user=session('user');
+        $uid=$user->uid;
+        $result=new AppModel();
+        $type=$result->getAdType();
+        $adInfo=$result->getAdPaging($uid,$app_id);
         return view('/admin/add_adPosition',['app_id'=>$app_id,'ad_type'=>$type,'ad_info'=>$adInfo]);
 
     }

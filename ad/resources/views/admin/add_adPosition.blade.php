@@ -27,30 +27,6 @@
                     </div>
 
                     <div class="box-body">
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>广告位id</th>
-                                <th>广告位名称</th>
-                                <th>广告位类型</th>
-                                <th>增加时间</th>
-                                <th>修改时间</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($ad_info as $ad_info)
-                                <tr>
-                                    <td>{{$ad_info->ad_position_id}}</td>
-                                    <td>{{$ad_info->ad_position_name}}</td>
-                                    <td>{{$ad_info->ad_type}}</td>
-                                    <td>{{$ad_info->create_time}}</td>
-                                    <td>{{$ad_info->update_time}} </td>
-                                    <td><a href="{{'/admin/del_adPosition/'}}{{$ad_info->appAd_id}}">删除</a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
                         <form  action="{{url('/admin/add_adPositionInfo')}}" class="form-horizontal">
 
                             {{csrf_field()}}
@@ -93,6 +69,31 @@
                             </div>
                             <!-- /.box-footer -->
                         </form>
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>广告位id</th>
+                                <th>广告位名称</th>
+                                <th>广告位类型</th>
+                                <th>增加时间</th>
+                                <th>修改时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($ad_info as $ad_infos)
+                                <tr>
+                                    <td>{{$ad_infos->ad_position_id}}</td>
+                                    <td>{{$ad_infos->ad_position_name}}</td>
+                                    <td>{{$ad_infos->ad_type}}</td>
+                                    <td>{{$ad_infos->create_time}}</td>
+                                    <td>{{$ad_infos->update_time}} </td>
+                                    <td><a href="{{'/admin/del_adPosition/'}}{{$ad_infos->appAd_id}}">删除</a></td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!! $ad_info->links() !!}
                     </div>
 
                 </div>

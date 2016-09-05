@@ -24,6 +24,18 @@ class AppModel extends BaseModel
     }
 
     /**
+     * 分页获取app列表
+     */
+    public function appPaging($uid,$appName){
+        if($appName==null){
+            return DB::table('app_info')->where('uid',$uid)->simplePaginate(8);
+        }else if($appName!=null){
+            return DB::table('app_info')->where('uid',$uid)->where('app_name', 'like', "%$appName%")->simplePaginate(8);
+        }
+
+    }
+
+    /**
      * 新增app信息
      */
     public function addAppInfo($data,$uid){
@@ -62,6 +74,18 @@ class AppModel extends BaseModel
             ->get();
         return $result;
     }
+
+    /**
+     * 分页获取广告位信息
+     */
+    public function getAdPaging($uid,$app_id){
+        $result=DB::table('app_ad')
+            ->leftJoin('ad_type', 'app_ad.adType_id', '=', 'ad_type.aT_id')
+            ->where(['uid'=>$uid,'app_id'=>$app_id,'enabled'=>1])
+            ->simplePaginate(5);
+        return $result;
+
+}
 
     /**
      *增加广告位信息
