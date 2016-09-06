@@ -255,7 +255,7 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">菜单选项</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i>
+        <li class="dropdown"><a href="#"><i class="fa fa-link"></i>
             <span>账户信息</span></a>
           <ul class="treeview-menu">
             <li><a href="#">账户一览</a></li>
@@ -265,19 +265,28 @@ desired effect
         </li>
 
         <!--应用管理-->
-        <li class="active"><a href="#"><i class="fa fa-link"></i>
+        <li class="dropdown">
+          <a href="#"><i class="fa fa-link"></i>
             <span>应用管理</span></a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/admin/app_manage')}}">应用列表</a></li>
+            <li>
+              <a  href="{{url('/admin/app_manage')}}">
+                <span>应用列表</span>
+              </a>
+            </li>
+
+          {{--  <li>
+              <a  href="{{url('/admin/app_manage')}}">
+                <span>应用广告统计</span>
+              </a>
+            </li>--}}
           </ul>
         </li>
         <!--end-->
 
-
-
-        <li><a href="#"><i class="fa fa-link"></i> <span>数据报表</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>媒体管理</span>
+        <li class="dropdown">
+          <a href="#"><i class="fa fa-link"></i>
+            <span>媒体管理</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -286,6 +295,32 @@ desired effect
             <li><a href="#">Link in level 2</a></li>
             <li><a href="#">Link in level 2</a></li>
           </ul>
+        </li>
+
+
+        <li class="dropdown">
+          <a href="#"><i class="fa fa-link"></i> <span>广告数据统计</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+
+
+          <!--BEGIN -->
+          <ul class="treeview-menu">
+            <li class="dropdown">
+              @foreach(session('appList')  as $app)
+                <a href="#">{{$app['app_name']}}</a>
+                <ul class="treeview-menu">
+                  <a href="#">{{$app['app_remark']}}</a>
+                </ul>
+              @endforeach
+            </li>
+            <li><a href="#">应用2</a></li>
+            <li><a href="#">应用3</a></li>
+          </ul>
+          <!-- END-->
+
         </li>
 
         <li class="treeview">

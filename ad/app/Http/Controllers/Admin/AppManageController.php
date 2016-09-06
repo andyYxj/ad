@@ -124,7 +124,22 @@ class AppManageController extends BaseController
             return back()->with('msg','广告位删除失败！');
         }
 
+    }
 
 
+    //需要在用户登录的时候就获取列表，需要改
+    /**
+     * 获取app广告列表，应用广告统计栏目
+     */
+        public  function getAppList(){
+         //   echo 111;die();
+        $user=session('user');
+        $uid=$user->uid;
+        $app=new AppModel();
+         $result=$app->appList($uid);
+            var_dump($result);die();
+            session('appList',$result);
+
+         return view('/layouts/admin',['appList'=>$result]);
     }
 }

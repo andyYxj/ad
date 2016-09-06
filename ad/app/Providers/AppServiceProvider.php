@@ -13,7 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      //  View::share('cqh','chenqionghe');
+       // $appList=session('appList');
+
+
+     //   view()->share('appList',$appList);
     }
 
     /**

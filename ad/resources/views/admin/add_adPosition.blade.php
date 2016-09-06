@@ -22,9 +22,6 @@
             <div class="col-md-10">
                 <!-- Horizontal Form -->
                 <div class="box box-info">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">广告位列表</h3>
-                    </div>
 
                     <div class="box-body">
                         <form  action="{{url('/admin/add_adPositionInfo')}}" class="form-horizontal">
@@ -69,6 +66,10 @@
                             </div>
                             <!-- /.box-footer -->
                         </form>
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">广告位列表</h3>
+                        </div>
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                             <tr>

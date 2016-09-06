@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 use App\Http\Model\UserModel;
+use App\Http\Model\AppModel;
 use App\Http\Model\Role;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
@@ -51,7 +52,16 @@ class UserController extends BaseController
             }
             session(['user'=>$user]);
            // var_dump(session('user')->uname);die();
+
+            //app左侧菜单列表
             $user=session('user');
+            $uid=$user->uid;
+            $app=new AppModel();
+            $appList=$app->appList($uid);
+            $appList=$this->object_array($appList);
+            //var_dump($appList);die();
+            session(['appList'=>$appList]);
+           // var_dump(session('appList'));die();
 
             return view('admin/index');
 

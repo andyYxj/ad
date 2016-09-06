@@ -19,7 +19,8 @@ Route::get('/', function () {
 /*不需要验证登录的路由组*/
 
 Route::get('/admin/login','Admin\UserController@login');
-Route::post('/admin/user_login','Admin\UserController@userLogin');
+Route::match(['get','post'],'/admin/user_login','Admin\UserController@userLogin');
+//Route::post('/admin/user_login','Admin\UserController@userLogin');
 Route::get('/admin/veri_code','Admin\UserController@veriCode');
 
 //获取捷酷广告数据
@@ -48,6 +49,8 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::match(['get','post'],'/admin/add_adPosition/{app_id}','Admin\AppManageController@addAdPaging');//增加广告位页面
     Route::match(['get','post'],'/admin/add_adPositionInfo/','Admin\AppManageController@addAdPositionInfo');//增加广告位方法
     Route::match(['get','post'],'/admin/del_adPosition/{appAd_id}','Admin\AppManageController@delAdPosition');//删除广告位方法
+
+    Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//侧边栏获取应用广告方法
 
 
 
