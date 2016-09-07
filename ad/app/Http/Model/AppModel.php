@@ -12,8 +12,26 @@ class AppModel extends BaseModel
      * app列表
      */
     public function appList($uid){
-        return $result=DB::table('app_info')->where('uid',$uid)->get();
-      //  var_dump($result);die();
+          $result=DB::table('app_ad')
+            ->leftJoin('app_info','app_ad.app_id','=','app_info.app_id')
+            ->where('app_ad.uid',$uid)
+             ->orderBy('app_ad.app_id', 'desc')
+            ->get();
+          $result=$this->object_array($result);
+        $res=array();
+        foreach($result as $k=>$v){
+            $res[$v['app_name']][]=$v;
+        }
+       //  var_dump($res);
+        //die();
+        return $res;
+
+
+
+       // $a=$result;
+        //dd($result);
+
+        var_dump($result);die();
        // return  $this->object_array($result);
     }
 

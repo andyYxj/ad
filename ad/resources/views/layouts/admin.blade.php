@@ -309,15 +309,17 @@ desired effect
           <!--BEGIN -->
           <ul class="treeview-menu">
             <li class="dropdown">
-              @foreach(session('appList')  as $app)
-                <a href="#">{{$app['app_name']}}</a>
-                <ul class="treeview-menu">
-                  <a href="#">{{$app['app_remark']}}</a>
-                </ul>
+              @foreach(session('appList')  as $app_key=>$app_value)
+
+                  <a href="#">{{$app_key}}   </a>
+              @foreach($app_value as $value)
+                 <ul class="treeview-menu">
+                   <a href="#"> {{$value['ad_position_id']}}  {{$value['ad_position_name']}}</a>
+                 </ul>
+                @endforeach
+
               @endforeach
             </li>
-            <li><a href="#">应用2</a></li>
-            <li><a href="#">应用3</a></li>
           </ul>
           <!-- END-->
 

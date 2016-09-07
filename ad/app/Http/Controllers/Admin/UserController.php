@@ -58,7 +58,7 @@ class UserController extends BaseController
             $uid=$user->uid;
             $app=new AppModel();
             $appList=$app->appList($uid);
-            $appList=$this->object_array($appList);
+           // $appList=$this->object_array($appList);
             //var_dump($appList);die();
             session(['appList'=>$appList]);
            // var_dump(session('appList'));die();

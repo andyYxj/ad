@@ -138,8 +138,17 @@ class AppManageController extends BaseController
         $app=new AppModel();
          $result=$app->appList($uid);
             var_dump($result);die();
-            session('appList',$result);
+            //session('appList',$result);
 
          return view('/layouts/admin',['appList'=>$result]);
+    }
+
+
+    /**
+     * 显示广告折线图
+     */
+    public function  showAdData(){
+        return view('/admin/data_analysis');
+
     }
 }
