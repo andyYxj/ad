@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/admin/login','Admin\UserController@login');
 Route::match(['get','post'],'/admin/user_login','Admin\UserController@userLogin');
-//Route::post('/admin/user_login','Admin\UserController@userLogin');
+Route::post('/admin/user_login','Admin\UserController@userLogin');
 Route::get('/admin/veri_code','Admin\UserController@veriCode');
 
 //获取捷酷广告数据

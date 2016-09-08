@@ -64,6 +64,7 @@ class UserController extends BaseController
            // var_dump(session('appList'));die();
 
             return view('admin/index');
+          //  return Redirect::route('admin/index');
 
         }else{
             return back()->with('msg','请填写登录信息！');

@@ -1,13 +1,6 @@
-
 @extends('layouts/admin')
 @section('content')
 
-
-    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
-    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
-    <script  src="{{asset('/public/admin/js/jquery1.8.3.min.js')}}"></script>
-    <script  src="{{asset('/public/admin/js/highCharts/highcharts.js')}}"></script>
-    <script  src="{{asset('/public/admin/js/highCharts/themes/dark-unica.js')}}"></script>
         <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -31,69 +24,303 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">广告统计</h3>
                     </div>
-                    <div id="container" style="min-width:400px;height:400px"></div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#container').highcharts({
-                                title: {
-                                    text: 'Monthly Average Temperature',
-                                    x: -20 //center
-                                },
-                                subtitle: {
-                                    text: 'Source: WorldClimate.com',
-                                    x: -20
-                                },
-                                xAxis: {
-                                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                                },
-                                yAxis: {
-                                    title: {
-                                        text: 'Temperature (°C)'
-                                    },
-                                    plotLines: [{
-                                        value: 0,
-                                        width: 1,
-                                        color: '#808080'
-                                    }]
-                                },
-                                tooltip: {
-                                    valueSuffix: '°C'
-                                },
-                                legend: {
-                                    layout: 'vertical',
-                                    align: 'right',
-                                    verticalAlign: 'middle',
-                                    borderWidth: 0
-                                },
-                                series: [{
-                                    name: 'Tokyo',
-                                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
-                                }, {
-                                    name: 'New York',
-                                    data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
-                                }, {
-                                    name: 'Berlin',
-                                    data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
-                                }, {
-                                    name: 'London',
-                                    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
-                                }]
+
+                    <div class="box-body">
+
+                        <div class="page-content">
+                            <!-- BEGIN PAGE CONTAINER-->
+                            <div class="container-fluid">
+                                <div class="row-fluid" style="margin-top:5px">
+                                    <div class="span4">
+                                        <div class="control-group">
+                                            <label class="control-label">
+                                                日期：
+                                            </label>
+                                            <div class="controls">
+                                                <div id="reportrange" class="pull-left dateRange" style="width:350px">
+                                                    <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                                                    <span id="searchDateRange"></span>
+                                                    <b class="caret"></b>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                   </div>
+
+<!--以下内容要合并在一起，否则js冲突报错-->
+                        <!--日历插件js相关-->
+
+                        <link href="{{asset('/public/daterangepicker/bootstrap.min.css')}}" rel="stylesheet">
+                        <link rel="stylesheet" type="text/css" media="all" href="{{asset('/public/daterangepicker/daterangepicker-bs3.css')}}"/>
+                        <link rel="stylesheet" type="text/css" media="all" href="{{asset('/public/daterangepicker/daterangepicker-1.3.7.css')}}"/>
+                        <link href="{{asset('/public/daterangepicker/font-awesome-4.1.0/css/font-awesome.min.css')}}" rel="stylesheet">
+
+
+                        <script type="text/javascript" src="{{asset('/public/daterangepicker/jquery-1.10.1.min.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('/public/daterangepicker/bootstrap.min.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('/public/daterangepicker/moment.js')}}"></script>
+                        <script type="text/javascript" src="{{asset('/public/daterangepicker/daterangepicker-1.3.7.js')}}"></script>
+                        <!--日历插件 js结束-->
+
+                        <script type="text/javascript">
+                              var  jq=jQuery.noConflict(true);
+                              jq(document).ready(function (){
+                                  //时间插件
+                                  jq('#reportrange span').html(moment().subtract('hours', 1).format('YYYY-MM-DD HH:mm:ss') + ' - ' + moment().format('YYYY-MM-DD HH:mm:ss'));
+
+                                  jq('#reportrange').daterangepicker(
+                                          {
+                                              // startDate: moment().startOf('day'),
+                                              //endDate: moment(),
+                                              //minDate: '01/01/2012',	//最小时间
+                                              maxDate : moment(), //最大时间
+                                              dateLimit : {
+                                                  days : 30
+                                              }, //起止时间的最大间隔
+                                              showDropdowns : true,
+                                              showWeekNumbers : false, //是否显示第几周
+                                              timePicker : true, //是否显示小时和分钟
+                                              timePickerIncrement : 60, //时间的增量，单位为分钟
+                                              timePicker12Hour : false, //是否使用12小时制来显示时间
+                                              ranges : {
+                                                  //'最近1小时': [moment().subtract('hours',1), moment()],
+                                                  '今日': [moment().startOf('day'), moment()],
+                                                  '昨日': [moment().subtract('days', 1).startOf('day'), moment().subtract('days', 1).endOf('day')],
+                                                  '最近7日': [moment().subtract('days', 6), moment()],
+                                                  '最近30日': [moment().subtract('days', 29), moment()]
+                                              },
+                                              opens : 'right', //日期选择框的弹出位置
+                                              buttonClasses : [ 'btn btn-default' ],
+                                              applyClass : 'btn-small btn-primary blue',
+                                              cancelClass : 'btn-small',
+                                              format : 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
+                                              separator : ' to ',
+                                              locale : {
+                                                  applyLabel : '确定',
+                                                  cancelLabel : '取消',
+                                                  fromLabel : '起始时间',
+                                                  toLabel : '结束时间',
+                                                  customRangeLabel : '自定义',
+                                                  daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                                                  monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                                                      '七月', '八月', '九月', '十月', '十一月', '十二月' ],
+                                                  firstDay : 1
+                                              }
+                                          }, function(start, end, label) {//格式化日期显示框
+
+                                              jq('#reportrange span').html(start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss'));
+                                              //alert( start.format('YYYY-MM-DD HH:mm:ss') + ' - ' + end.format('YYYY-MM-DD HH:mm:ss') );
+                                              //此处执行回调函数 ajax请求
+                                          });
+
+                                  //设置日期菜单被选项  --开始--
+                                  var dateOption ;
+                                  if("jq{riqi}"=='day') {
+                                      dateOption = "今日";
+                                  }else if("jq{riqi}"=='yday') {
+                                      dateOption = "昨日";
+                                  }else if("jq{riqi}"=='week'){
+                                      dateOption ="最近7日";
+                                  }else if("jq{riqi}"=='month'){
+                                      dateOption ="最近30日";
+                                  }else if("jq{riqi}"=='year'){
+                                      dateOption ="最近一年";
+                                  }else{
+                                      dateOption = "自定义";
+                                  }
+                                  jq(".daterangepicker").find("li").each(function (){
+                                      if(jq(this).hasClass("active")){
+                                          jq(this).removeClass("active");
+                                      }
+                                      if(dateOption==jq(this).html()){
+                                          jq(this).addClass("active");
+                                      }
+                                  });
+
+
+                                  //设置日期菜单被选项  --结束--
+                              })
+                          </script>
+                        <!--以上内容要合并在一起，否则js冲突报错-->
+
+
+                        <!--  数据统计图表部分 开始-->
+                                <div id="main" style="height:400px"></div>
+                                <!-- ECharts单文件引入 -->
+                                 <script src="{{asset('/public/echarts-2.2.7/build/dist/echarts.js')}}"></script>
+                                 <script type="text/javascript">
+
+                            /*图表部分js*/
+                            // var adData = new Array();
+
+                            /*     $(document).ready(function(){
+                             $.ajax({
+                             url : '',
+                             type : 'POST',
+                             dataType : 'json',
+                             async : false,
+                             success : function(data) {
+
+                             }
+                             });
+
+                             });*/
+
+
+
+
+                            /* 路径配置*/
+                            require.config({
+                                paths: {
+                                    echarts: '{{asset('/public/echarts-2.2.7/build/dist/')}}'
+                                }
                             });
-                        });
 
-                    </script>
+                             /*使用*/
+                            require(
+                                    [
+                                        'echarts',
+                                        'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+                                    ],
+                                    function (ec) {
+                                        // 基于准备好的dom，初始化echarts图表
+                                        var myChart = ec.init(document.getElementById('main'));
 
+                                        var option = {
+                                            tooltip: {
+                                                trigger: 'axis'
+                                            },
+                                            legend: {
+                                                data: ['总收入', '展现次数', '点击数', '点击率', '每千次展现收入']
+                                            },
+                                            toolbox: {
+                                                show: true,
+                                                feature: {
+                                                    mark: {show: true},
+                                                    dataView: {show: true, readOnly: false},
+                                                    magicType: {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                                                    restore: {show: true},
+                                                    saveAsImage: {show: true}
+                                                }
+                                            },
+                                            calculable: true,
+                                            xAxis: [
+                                                {
+                                                    type: 'category',
+                                                    boundaryGap: true,
+                                                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                                                }
+                                            ],
+                                            yAxis: [
+                                                {
+                                                    type : 'value',
+                                                    position: 'left',
+                                                    name : '(元)',
+                                                    boundaryGap: [0,0.1],
+                                                    axisLine : {    // 轴线
+                                                        show: true,
+                                                        lineStyle: {
+                                                            color: 'red',
+                                                            type: 'dashed',
+                                                            width: 2
+                                                        }
+                                                    },
+
+                                                },{
+                                                    type : 'value',
+                                                    position:'right',
+                                                    splitNumber: 10,
+                                                    name: '次数',
+                                                        axisLabel: {
+                                                            formatter: function (value) {
+                                                                // Function formatter
+                                                                return value + '次'
+                                                            }
+                                                        },
+                                                        splitLine: {
+                                                            show: false
+                                                        }
+                                                    }
+
+
+                                            ],
+                                            series: [
+                                                {
+                                                    name: '总收入',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    data: [120, 132, 101, 134, 90, 230, 210]
+                                                },
+                                                {
+                                                    name: '展现次数',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    yAxisIndex:1,
+                                                    data: [220, 182, 191, 234, 290, 330, 310]
+                                                },
+                                                {
+                                                    name: '点击数',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    yAxisIndex:1,
+                                                    data: [150, 232, 201, 154, 190, 330, 410]
+                                                },
+                                                {
+                                                    name: '点击率',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    yAxisIndex:1,
+                                                    data: [320, 332, 301, 334, 390, 330, 320]
+                                                },
+                                                {
+                                                    name: '每千次展现收入',
+                                                    type: 'line',
+                                                    stack: '总量',
+                                                    yAxisIndex:1,
+                                                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                                                }
+                                            ]
+                                        };
+                                   /*     // 异步加载数据
+                                        $.get('data.json').done(function (data) {
+                                            // 填入数据
+                                            myChart.setOption({
+                                                xAxis: {
+                                                    data: data.categories
+                                                },
+                                                series: [{
+                                                    // 根据名字对应到相应的系列
+                                                    name: '销量',
+                                                    data: data.data
+                                                }]
+                                            });
+                                        });*/
+
+
+                                        // 为echarts对象加载数据
+                                        myChart.setOption(option);
+                                    }
+                            );
+                        </script>
+                            <!--  数据统计图表部分 结束-->
+
+                </div>
 
                 </div>
             </div>
-        </div>
-        <!-- /.row -->
+                    </div>
+            <!-- /.row -->
     </section>
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
 
+
+
 @endsection
+
+
 
 
