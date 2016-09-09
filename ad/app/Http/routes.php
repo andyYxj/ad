@@ -60,6 +60,7 @@ Route::group(['middleware'=>['admin.login']],function(){
 //test
 Route::match(['get','post'],'/admin/ad_showData','Admin\AppManageController@showAdData');//侧边栏获取应用广告方法
 Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//侧边栏获取应用广告方法
+Route::match(['get','post'],'/admin/ad_showAllData','Admin\AppManageController@showAllAdData');//侧边栏获取应用广告方法
 
 Route::get('test', function ($name = null) {
     return date('YmdHis') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);

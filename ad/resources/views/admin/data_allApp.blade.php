@@ -6,12 +6,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            用户管理页
+            账户信息
             <small></small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li><a href="#">广告数据统计</a></li>
+            <li><a href="#">应用数据汇总</a></li>
         </ol>
     </section>
 
@@ -22,7 +22,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">广告统计</h3>
+                        <h3 class="box-title">应用数据汇总</h3>
                     </div>
 
                     <div class="box-body">
@@ -200,9 +200,9 @@
                                                 data: ['总收入', '展现次数', '点击数', '点击率', '每千次展现收入']
                                             },
                                             grid: {
-                                                left: '200',
-                                                right: '200',
-                                                bottom: '200',
+                                                left: '3%',
+                                                right: '4%',
+                                                bottom: '3%',
                                                 containLabel: true
                                             },
                                             toolbox: {
@@ -233,7 +233,7 @@
                                                         lineStyle: {
                                                             color: 'red',
                                                             type: 'dashed',
-                                                            width: 1
+                                                            width: 2
                                                         }
                                                     },
 

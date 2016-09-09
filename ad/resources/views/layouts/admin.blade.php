@@ -266,7 +266,7 @@ desired effect
         <li class="dropdown"><a href="#"><i class="fa fa-link"></i>
             <span>账户信息</span></a>
           <ul class="treeview-menu">
-            <li><a href="#">账户一览</a></li>
+            <li><a href="{{asset('/admin/ad_showAllData')}}">账户一览</a></li>
             <li><a href="#">财务结算</a></li>
             <li><a href="#">账务信息</a></li>
           </ul>
@@ -396,7 +396,7 @@ desired effect
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="javascript:void(0)">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
                 <span class="pull-right-container">

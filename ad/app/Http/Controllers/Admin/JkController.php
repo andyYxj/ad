@@ -120,9 +120,21 @@ class JkController extends BaseController
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $result);
         curl_setopt($ch, CURLOPT_TIMEOUT, 50);
-        $output = curl_exec($ch);
+        $output = json_decode(curl_exec($ch),true);
+        //$output=curl_exec($ch);
         curl_close($ch);
-        echo $output;
+        var_dump($output);
+        //返回的数据成功的话
+        if($output['Success']){
+            $data=array(
+                'Adslot_id'=>$output['Ads'][0]['Adslot_id'],
+                'Id'=>$output['Ads'][0]['Native_material']['Type'],
+                'Search_id'=>$output['Search_id'],
+                'Jesgoo_id'=>$output['Jesgoo_id'],
+
+            );
+            var_dump($data);
+        }
 
     }
 

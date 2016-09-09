@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echarts</title>
+</head>
+<body>
+<div id="main" style="height:400px"></div>
+<script src="echarts.js"></script>
+<script src="jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'http://echarts.baidu.com/build/dist'
+        }
+    });
+
+    require(
+            [
+                'echarts',
+                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+              /*  var option = {
+
+                };*/
+
+                //alert(1321);
+                // 为echarts对象加载数据
+              //  myChart.setOption(option);
+                $.get('line.php').done(function (data) {
+                 //  alert(213);
+                    alert(data);
+                    var Data=eval('('+data+')');
+                   // var Data=eval(data);
+                    alert(Data.time);
+                    myChart.setOption({
+                        tooltip: {
+                            show: true
+                        },
+                        legend: {
+                            data:['销量','温度']
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : Data.time,
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value',
+                                name:'斤',
+                                position:'left'
+                            },
+                            {
+                                type : 'value',
+                                name:'。C',
+                                position:'right'
+                            }
+                        ],
+                        series : [
+                            {
+                                "name":"销量",
+                                "type":"bar",
+                                "data":[5, 20, 40, 10, 10, 20]
+                            },
+                            {
+                                "name":"温度",
+                                "type":"line",
+                                yAxisIndex: 1,
+                                "data":[50, 20, 40, 10, 10, 20]
+                            }
+                        ]
+
+
+
+                    });
+                });
+            }
+    );
+</script>
+
+</body>
+</html>

@@ -145,10 +145,17 @@ class AppManageController extends BaseController
 
 
     /**
-     * 显示广告折线图
+     * 显示单一广告位id的 广告折线图
      */
     public function  showAdData(){
         return view('/admin/data_analysis');
 
+    }
+
+    /**
+     * 显示所有应用下额所有广告位id 广告折线图
+     */
+    public function  showAllAdData(){
+        return view('/admin/data_allApp');
     }
 }
