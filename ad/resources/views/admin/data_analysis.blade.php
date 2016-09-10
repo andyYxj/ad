@@ -182,7 +182,7 @@
                             require(
                                     [
                                         'echarts',
-                                        'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+                                        'echarts/chart/line' // 使用柱状图就加载line模块，按需加载
                                     ],
                                     function (ec) {
                                         // 基于准备好的dom，初始化echarts图表
@@ -258,34 +258,34 @@
                                                 {
                                                     name: '总收入',
                                                     type: 'line',
-                                                    stack: '总量',
+
                                                     data: [120, 132, 101, 134, 90, 230, 210]
                                                 },
                                                 {
                                                     name: '展现次数',
                                                     type: 'line',
-                                                    stack: '总量',
+
                                                     yAxisIndex:1,
                                                     data: [220, 182, 191, 234, 290, 330, 310]
                                                 },
                                                 {
                                                     name: '点击数',
                                                     type: 'line',
-                                                    stack: '总量',
+
                                                     yAxisIndex:1,
                                                     data: [150, 232, 201, 154, 190, 330, 410]
                                                 },
                                                 {
                                                     name: '点击率',
                                                     type: 'line',
-                                                    stack: '总量',
+
                                                     yAxisIndex:1,
                                                     data: [320, 332, 301, 334, 390, 330, 320]
                                                 },
                                                 {
                                                     name: '每千次展现收入',
                                                     type: 'line',
-                                                    stack: '总量',
+
                                                     data: [820, 932, 901, 934, 1290, 1330, 1320]
                                                 }
                                             ]

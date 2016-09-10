@@ -51,7 +51,7 @@
                                 <td>{{$appinfo->app_remark}}</td>
                                 <td>{{$appinfo->create_time}}</td>
                                 <td>{{$appinfo->update_time}} </td>
-                                <td><a href=" {{'/admin/add_adPosition/' }}{{$appinfo->app_id}}">添加广告位</a></td>
+                                <td><a href=" {{'/admin/add_adPosition/' }}{{ $appinfo->app_id }}">添加广告位</a></td>
                             </tr>
                                 @endforeach
                             </tbody>

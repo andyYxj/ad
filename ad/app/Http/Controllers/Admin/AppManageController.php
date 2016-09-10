@@ -158,4 +158,38 @@ class AppManageController extends BaseController
     public function  showAllAdData(){
         return view('/admin/data_allApp');
     }
+
+
+    /**
+     * 获取用户下的管理广告数据，或者超级管理员下的所有用户的数据
+     */
+    public function getAdData($ad_position_id,$app_id=null,$user_role){
+
+        //一般公司人员，获取配置数据
+        if($user_role==4){
+            //仅仅获取当前用户下 广告位id下的数据
+
+
+            //获取登录用户的某个app的 数据
+
+            //获取当前用户下的所有数据
+
+        }
+
+        //超级管理员
+        if($user_role==0){
+            //超级管理员获取所有数据
+
+            //超级管理员获取某个用户的数据
+
+            //超级管理员获取某个用户下的某个app的数据
+
+            //超级管理员获取某个用户 -app-广告位的id
+
+        }
+
+
+
+
+    }
 }

@@ -50,7 +50,9 @@ Route::group(['middleware'=>['admin.login']],function(){
     Route::match(['get','post'],'/admin/add_adPositionInfo/','Admin\AppManageController@addAdPositionInfo');//增加广告位方法
     Route::match(['get','post'],'/admin/del_adPosition/{appAd_id}','Admin\AppManageController@delAdPosition');//删除广告位方法
 
-   // Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//侧边栏获取应用广告方法
+    Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//侧边栏获取应用列表
+    Route::match(['get','post'],'/admin/ad_showAllData','Admin\AppManageController@showAllAdData');//账户信息下，账户下的广告数据统计
+    Route::match(['get','post'],'/admin/get_adData/ad_position_id/{ad_position_id}/app_id{app_id?}/user_role{user_role?}','Admin\AppManageController@getAdData');//获取广告统计数据，用于图表展示
 
 
 
@@ -58,9 +60,8 @@ Route::group(['middleware'=>['admin.login']],function(){
 
 
 //test
-Route::match(['get','post'],'/admin/ad_showData','Admin\AppManageController@showAdData');//侧边栏获取应用广告方法
-Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//侧边栏获取应用广告方法
-Route::match(['get','post'],'/admin/ad_showAllData','Admin\AppManageController@showAllAdData');//侧边栏获取应用广告方法
+Route::match(['get','post'],'/admin/ad_showData','Admin\AppManageController@showAdData');// 侧边栏获取应用广告方法
+//Route::match(['get','post'],'/admin/app_list','Admin\AppManageController@getAppList');//
 
 Route::get('test', function ($name = null) {
     return date('YmdHis') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);

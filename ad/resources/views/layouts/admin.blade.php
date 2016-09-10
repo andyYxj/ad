@@ -333,6 +333,63 @@ desired effect
 
         </li>
 
+        <!--获取菜单数据,用户，应用，广告位-->
+        <script type="text/javascript">
+
+          $.ajax({
+            url: url,
+            type:post,
+            data:Data,
+            success:function(result){
+              var data = eval(result);
+              for (var i = 0; i < data.length; i++) {
+                var html = "";
+                html = "<li><a code='" + data[i].StudentID+ "'>" + data[i].StudentName+ "</a></li>";
+                $("#City").append(html);//给li追加 a标签
+                $("#City li a").attr("onclick", "Student.GetDropDown(this, 2)");
+              }
+
+
+
+            }
+
+          });
+
+        </script>
+
+
+
+        <li class="dropdown">
+          <a href="#"><i class="fa fa-link"></i> <span>平台广告数据汇总</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+
+
+          <!--BEGIN -->
+          <ul class="treeview-menu">
+            <li class="dropdown">
+              @foreach(session('appList')  as $app_key=>$app_value)
+
+                @foreach($app_value as $value)
+                  <ul class="treeview-menu">
+                    <li  class="treeview">
+                      123
+                    </li>
+                    <a href="#"> {{$value['ad_position_id']}}  {{$value['ad_position_name']}}</a>
+                  </ul>
+                @endforeach
+
+              @endforeach
+            </li>
+          </ul>
+          <!-- END-->
+
+        </li>
+
+        <!---->
+
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>用户管理</span>
             <span class="pull-right-container">
