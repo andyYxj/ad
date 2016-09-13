@@ -56,6 +56,17 @@ Route::group(['middleware'=>['admin.login']],function(){
 
 
 
+    Route::match(['get','post'],'/admin/get_allAd_list','Admin\UserController@get_adList');//获取公司广告列表,role_id=4
+   /* Route::match(['get','post'],'/admin/get_app_list','Admin\UserController@get_appList');//获取用户对应的应用列表
+    Route::match(['get','post'],'/admin/get_ad_position','Admin\UserController@get_adPosition');//获取应用对应的广告位id列表*/
+
+
+
+
+
+
+
+
 });
 
 

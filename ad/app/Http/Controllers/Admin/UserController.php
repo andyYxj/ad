@@ -181,4 +181,25 @@ class UserController extends BaseController
         }
 
     }
+
+    /**
+     * 获取公司广告列表
+     */
+        public function get_adList(){
+            $user=session('user');
+            if(isset($user)){
+                //超级管理员
+                if($user->role_id==0){
+                    $info=new UserModel();
+                    $info=$info->getAllInfo();
+                    var_dump($info);
+
+                }
+
+            }
+
+
+     }
+
+
 }

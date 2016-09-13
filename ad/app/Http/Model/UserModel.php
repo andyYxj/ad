@@ -58,4 +58,18 @@ class UserModel extends BaseModel
             ->update(['passwd'=>$passwd]);
 
     }
+
+    /**
+     * 获取所有公司用户(role_id=4)应用，广告位id信息
+     */
+
+    public  function  getAllInfo(){
+        $result=DB::table('user')
+            ->leftJoin('app_info','user.uid','=','app_info.uid')
+            ->leftJoin('ad_infosave','app_info.app_id','=','app_ad.app_id')
+            ->where('user.role_id','=',4)
+             ->get();
+
+        var_dump($result);die();
+    }
 }

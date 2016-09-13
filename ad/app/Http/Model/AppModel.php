@@ -18,15 +18,13 @@ class AppModel extends BaseModel
              ->orderBy('app_ad.app_id', 'desc')
             ->get();
           $result=$this->object_array($result);
-        $res=array();
+          $res=array();
         foreach($result as $k=>$v){
             $res[$v['app_name']][]=$v;
         }
        //  var_dump($res);
         //die();
         return $res;
-
-
 
        // $a=$result;
         //dd($result);
